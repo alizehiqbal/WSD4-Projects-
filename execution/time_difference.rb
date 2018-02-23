@@ -56,3 +56,14 @@ def subarray_2(arr)
   end
   max_sum
 end
+
+def first_anagram(str1, str2)
+  arr = str1.chars
+  perm_nums = (1..arr.length).inject(:*) || 1
+  perms = []
+  until perms.length == perm_nums
+    temp = arr.shuffle.join
+    perms<<temp unless perms.include?(temp)
+  end
+  perms.include?(str2)
+end
